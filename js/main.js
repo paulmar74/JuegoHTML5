@@ -320,7 +320,7 @@ function dibujarTexto(){
 	}
 	if(juego.estado == 'victoria'){
 		ctx.fillStyle = colorLetter;
-		ctx.font = 'bold 70pt Arial';
+		ctx.font = 'bold 55pt Arial';
 		ctx.fillText(textoRespuesta.titulo,140,200);
 		ctx.font = '20pt Arial';
 		ctx.fillText(textoRespuesta.subtitulo,140,250);
