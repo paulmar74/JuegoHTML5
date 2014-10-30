@@ -1,0 +1,21 @@
+@charset "utf-8";
+body{overflow:hidden;}
+.wrapper-all{width:1200px;margin:0 auto}
+canvas#game{display:block;border:1px solid #000;margin:0 auto;}
+.wrapper-lb{position:absolute;width:100%;height:100%;background-color:rgba(0,0,0,0.96);/*opacity:0.7;filter:alpha(opacity=70);-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=70)";*/}
+.lbcontent{position:absolute;margin:-181px 0 0 -270px;left:50%;top:50%;width:540px;height:362px;padding:15px;background:#000;border:1px dashed #fff;text-align:center;}
+.lbcontent h2{padding: 0 0 10px 0;font: normal 22px/26px "Trebuchet MS", Arial, Helvetica, sans-serif;color:#fff;text-align:center;}
+.lbcontent h3{padding: 0 0 36px 0;font: normal 18px/20px "Trebuchet MS", Arial, Helvetica, sans-serif;color:#fff;text-align:center;}
+.partidos{overflow:hidden;padding:0;text-align:center;}
+.partidos a{padding: 0 40px 0 ;
+	 -webkit-transition-duration: 0.3s; 
+	 -moz-transition-duration: 0.3s; 
+	 transition-duration: 0.3s;}
+.partidos a:hover{opacity:0.7}
+.wrap_step2{display:none;}
+a.bot-ini{display:block;padding: 7px 10px;width:200px;margin:0 auto;background:#900;border-radius:10px;font: normal 18px/20px "Trebuchet MS", Arial, Helvetica, sans-serif;color:#fff;text-align:center;text-decoration:none;-webkit-transition-duration: 0.3s; -moz-transition-duration: 0.3s;transition-duration: 0.3s;
+}
+a.bot-ini:hover{opacity:0.7;}
+p.credits{text-align:right;font: 12px "Trebuchet MS", Arial, Helvetica, sans-serif;color:#999}
+p.credits a{color:#999;text-decoration:none;}
+p.credits a:hover{text-decoration:underline;}
