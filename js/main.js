@@ -79,7 +79,7 @@ var textoRespuesta = {
 // definicion de funciones
 function loadMedia(){
 	fondo = new Image();
-	fondo.src = 'images/backgame.jpg';
+	fondo.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVSml1b3ctQU1qVFU';
 	fondo.onload = function(){
 			 intervalo = window.setInterval(frameloop,1000/55);	
 			  //setTimeout(function(){window.clearInterval(intervalo)},10000);	
@@ -88,15 +88,15 @@ function loadMedia(){
 function dibujarEnemigos(){
 	if (part == 'dd'){
 	var imgEnemigo = new Image();
-	    imgEnemigo.src = 'images/dd.png';
+	    imgEnemigo.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVRjVQMFJnbTZnRms';
 	var imgEnemigoHit = new Image();
-	    imgEnemigoHit.src = 'images/ddHit.png';
+	    imgEnemigoHit.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVSUVldkYtdk1kMms';
 	}
 	if(part == 'amd'){
 		var imgEnemigo = new Image();
-	    imgEnemigo.src = 'images/amd.png';
+	    imgEnemigo.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVU2FsUVlOaHBKc1U';
 		var imgEnemigoHit = new Image();
-	    imgEnemigoHit.src = 'images/amdHit.png';
+	    imgEnemigoHit.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVcm5CdUJ4cjNfblU';
 	}
 	for (var i in enemigos){
 		var enemigo = enemigos[i];
@@ -114,9 +114,9 @@ function dibujarFondo(){
 function dibujarNave(){
 	console.info (nave.estado)
 	var imgNave = new Image();
-	    imgNave.src = 'images/nativos.gif';
+	    imgNave.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVNzVzQ21JdGJzLTA';
 	var imgNaveHit = new Image();
-	    imgNaveHit.src = 'images/nativosHit.gif';
+	    imgNaveHit.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVODdTWHZfeU1SZlU';
 	ctx.save();
 	
 	/*ctx.fillStyle='#fff';*/
@@ -195,7 +195,7 @@ function dibujarDisparosEnemigos(){
 	for(var i in disparosEnemigos){
 		var disparo = disparosEnemigos[i];
 		var fired = new Image();
-		fired.src = 'images/fire.png';
+		fired.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVcGk1cl9JaHd6Z28';
 		ctx.save();
 		//ctx.fillStyle = 'yellow';
 		ctx.drawImage(fired,disparo.x,disparo.y,disparo.width,disparo.height);
@@ -291,7 +291,7 @@ function fire(){
 }
 function dibujarDisparos(){
 	var imgLanza = new Image();
-	imgLanza.src = 'images/lanza.gif'
+	imgLanza.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVZnNCMVJsMDk1Wk0'
 	ctx.save();
 	for (var i in disparos){
 		var disparo = disparos[i];
