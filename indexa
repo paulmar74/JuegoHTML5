@@ -1,0 +1,49 @@
+<!doctype html >
+<head>
+<title>.:: Juego html5 ::.</title>
+<meta property="og:image" content="http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVYlVtemZydjUzdDg" />
+<meta property="og:title" content="AMD vs DD 'EL JUEGO'" />
+<meta property="og:description" content="Una pequeña distracción de las elecciones de 2da vuelta que se vienen y de paso saber tus preferencias"/>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<!--[if gte IE 9]>
+  <style type="text/css">
+    .gradient {
+       filter: none;
+    }
+  </style>
+<![endif]-->
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=473676672688881&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="wrapper-lb">
+	<div class="lbcontent">
+		<h2>Ayuda a nuestros hermanos nativos a luchar contra los que destruyen su tierra</h2>
+        <h3>Escoge a tu adversario:</h3>
+        <div class="partidos" id="wrap_partido">
+        	<a href="#" data-partido = 'dd'><img src="http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVRjVQMFJnbTZnRms" alt="Partido Democracia Directa" /></a>
+            <a href="#" data-partido = 'amd'><img src="http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVWGxuUlZ0WEdJS1E" alt="Partido amor por Madre de Dios"></a>
+        </div>
+        <div class="wrap_step2" id="sg">
+            <img src="http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVRERDcXpIVmEzbGc" alt="teclado" />
+            <a href="#" class="bot-ini" >Iniciar Juego</a>
+        </div>
+	</div>
+</div>
+<div class="wrapper-all">
+  <canvas id="game" width="1200" height="700">
+        Tu navegador no soporta canvas
+  </canvas>
+	<p class="credits">Desarrollado x <a href="mailto:paulmar74@gmail.com">Paulmar</a></p>
+	<div class="fb-share-button" data-href="http://paulmar74.github.io/JuegoHTML5" data-width="300"></div>
+</div>
+<img src="http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVYlVtemZydjUzdDg" alt="AMD vs DD El Juego" id="campaign-icon"  style = "visibility:hidden"	/>
+<script src="js/main.js"></script>
+</body>
+</html>
