@@ -1,6 +1,7 @@
 var part;
 var choosePartido = {
 	load:function(){
+		$('body').css('height',(window.height));
 		var startGame = document.getElementById('sg');
 		var partido = document.getElementById('wrap_partido');
 		var partidAtt = partido.getElementsByTagName('a');
@@ -26,9 +27,12 @@ var choosePartido = {
 	 	 startGame.addEventListener('click',function(){
 			/* if (part != ''){*/
 				wrap.style.display = 'none';
-				
 				agregarEventosTeclado();
+				iniciarApp();
 				loadMedia();
+				//
+				
+				
 			/* }*/
 		 })
 	
@@ -49,7 +53,7 @@ var config = {
 	filasEnemigos:2
 	
 }
-var fondo;
+var fondo,imgEnemigo,imgEnemigoHit,imgNave,imgNaveHit,fired,imgLanza;
 var intervalo;
 // crear nave
 var teclado = {};
@@ -80,24 +84,36 @@ var textoRespuesta = {
 function loadMedia(){
 	fondo = new Image();
 	fondo.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVSml1b3ctQU1qVFU';
+	imgLanza = new Image();
+	imgLanza.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVZnNCMVJsMDk1Wk0';
+	/*if (part == 'dd'){*/
+	 imgEnemigo = new Image();
+	 imgEnemigo.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVRjVQMFJnbTZnRms';
+	 imgEnemigoHit = new Image();
+	 imgEnemigoHit.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVSUVldkYtdk1kMms';
+	/*}*/
+	if(part == 'amd'){
+		imgEnemigo = new Image();
+	    imgEnemigo.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVU2FsUVlOaHBKc1U';
+		imgEnemigoHit = new Image();
+	    imgEnemigoHit.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVcm5CdUJ4cjNfblU';
+	}
+	imgNave = new Image();
+	imgNave.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVNzVzQ21JdGJzLTA';
+	imgNaveHit = new Image();
+	imgNaveHit.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVODdTWHZfeU1SZlU';
+	fired = new Image();
+	fired.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVcGk1cl9JaHd6Z28';
 	fondo.onload = function(){
-			 intervalo = window.setInterval(frameloop,1000/55);	
+			 
 			  //setTimeout(function(){window.clearInterval(intervalo)},10000);	
+	}
+	if(fondo.complete&&imgLanza.complete&&imgEnemigo.complete&&imgEnemigoHit.complete&&imgNave.complete&&imgNaveHit.complete&&fired.complete){
+			
 	}
 }
 function dibujarEnemigos(){
-	if (part == 'dd'){
-	var imgEnemigo = new Image();
-	    imgEnemigo.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVRjVQMFJnbTZnRms';
-	var imgEnemigoHit = new Image();
-	    imgEnemigoHit.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVSUVldkYtdk1kMms';
-	}
-	if(part == 'amd'){
-		var imgEnemigo = new Image();
-	    imgEnemigo.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVU2FsUVlOaHBKc1U';
-		var imgEnemigoHit = new Image();
-	    imgEnemigoHit.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVcm5CdUJ4cjNfblU';
-	}
+	
 	for (var i in enemigos){
 		var enemigo = enemigos[i];
 		ctx.save();
@@ -112,11 +128,7 @@ function dibujarFondo(){
 	ctx.drawImage(fondo,0,0);	
 }
 function dibujarNave(){
-	console.info (nave.estado)
-	var imgNave = new Image();
-	    imgNave.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVNzVzQ21JdGJzLTA';
-	var imgNaveHit = new Image();
-	    imgNaveHit.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVODdTWHZfeU1SZlU';
+	
 	ctx.save();
 	
 	/*ctx.fillStyle='#fff';*/
@@ -194,8 +206,7 @@ function moverNave(){
 function dibujarDisparosEnemigos(){
 	for(var i in disparosEnemigos){
 		var disparo = disparosEnemigos[i];
-		var fired = new Image();
-		fired.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVcGk1cl9JaHd6Z28';
+		
 		ctx.save();
 		//ctx.fillStyle = 'yellow';
 		ctx.drawImage(fired,disparo.x,disparo.y,disparo.width,disparo.height);
@@ -290,8 +301,7 @@ function fire(){
 	});
 }
 function dibujarDisparos(){
-	var imgLanza = new Image();
-	imgLanza.src = 'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVZnNCMVJsMDk1Wk0'
+	
 	ctx.save();
 	for (var i in disparos){
 		var disparo = disparos[i];
@@ -410,5 +420,5 @@ function frameloop(){
 }
 // ejecucion de funcion que a su vez ejecutara las otras funciones.
 
-
+loadMedia();
 choosePartido.load();
