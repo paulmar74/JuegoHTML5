@@ -1,7 +1,12 @@
 var part;
 var choosePartido = {
 	load:function(){
-		$('body').css('height',(window.height));
+		//$('body').css('height',(window.height));
+		 $(window).keydown(function (event) {console.info(event.keyCode)
+			if (event.which == 32 ) {
+				event.preventDefault();
+			}
+		});
 		var startGame = document.getElementById('sg');
 		var partido = document.getElementById('wrap_partido');
 		var partidAtt = partido.getElementsByTagName('a');
