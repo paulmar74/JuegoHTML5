@@ -1,18 +1,12 @@
-var canvasDos,preloader,imagenes;
-imagenes = ['http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVRERDcXpIVmEzbGc',
-'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVU2FsUVlOaHBKc1U',
-'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVcm5CdUJ4cjNfblU',
-'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVSml1b3ctQU1qVFU',
-'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVRjVQMFJnbTZnRms',
-'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVSUVldkYtdk1kMms',
-'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVZnNCMVJsMDk1Wk0',
-'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVNzVzQ21JdGJzLTA',
-'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVODdTWHZfeU1SZlU',
-'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVWGxuUlZ0WEdJS1E',
-'http://drive.google.com/uc?export=view&id=0B31lrqy0GyeVYlVtemZydjUzdDg'];
-$(document).on("ready",iniciarApp);
+var canvasDos,motorPreload;
+var preloader = {
+		progress : 0,
+			
+	}
+
 function iniciarApp()
 {
+	
 	canvasDos = document.getElementById('miCanvas');
 	$("#miCanvas").css({
 		'top':($('html').height()-canvasDos.height)/4+'px',
@@ -22,8 +16,10 @@ function iniciarApp()
 		'top':($('html').height()-$("#porcentaje").height())/3.5+'px',
 		'left':($('html').width()-$("#porcentaje").width())/2+'px'
 	});
-	preloader = new PreloadJS();
-	preloader.onProgress = progresoCarga;
+	$('#preloader').css('display','block');
+	motorPreload = window.setInterval(function(){
+		progresoCarga()
+	},1000/55)
 	prepararCanvas();
 }
 function prepararCanvas()
@@ -36,18 +32,21 @@ function prepararCanvas()
 	ctxD.strokeStyle= "gray";
 	ctxD.lineWidth= 4;
 	ctxD.stroke();
-	cargar();
+	//cargar();
 }
-function cargar()
+/*function cargar()
 {
 	while(imagenes.length > 0)
 	{
 		var imagen = imagenes.shift();
 		preloader.loadFile(imagen);	
+
 	}
-}
+}*/
 function progresoCarga()
 {
+	preloader.progress = preloader.progress + 0.004;
+	console.log(preloader.progress)
 	var ctxD = canvasDos.getContext('2d');
 	ctxD.beginPath();
 	var radio= 98;
@@ -58,12 +57,14 @@ function progresoCarga()
 	ctxD.strokeStyle = "black";
 	ctxD.lineWidth = 4;
 	ctxD.stroke();
-	var progresoEntero = parseInt(preloader.progress*100);
+	var progresoEntero = parseInt((preloader.progress)*100);
 	$("#porcentaje").text(progresoEntero+"%");
-	if(preloader.progress == 1)
+	if(progresoEntero == 100)
 	{
 		$("#preloader").remove();
-		$("#wrapper").fadeIn();
-		var interval = window.setInterval(frameLoop,1000/55);
+		//$("#wrapper").fadeIn();
+		//var intervalo = window.setInterval(frameloop,1000/55);
+		intervalo = window.setInterval(frameloop,1000/55);
+		setTimeout(function(){window.clearInterval(motorPreload)});
 	}
 }
