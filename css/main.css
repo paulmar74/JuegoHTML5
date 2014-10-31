@@ -10,8 +10,23 @@ background: -ms-linear-gradient(top,  rgba(247,251,252,1) 0%,rgba(217,237,242,1)
 background: linear-gradient(to bottom,  rgba(247,251,252,1) 0%,rgba(217,237,242,1) 40%,rgba(173,217,228,1) 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7fbfc', endColorstr='#add9e4',GradientType=0 ); /* IE6-8 */
 
-
-
+}
+header{padding: 20px 0 0 ;text-align:center;}
+#miCanvas
+{
+	position: absolute;
+}
+#porcentaje
+{
+	font-weight:bolder;
+	color:#000;
+	font-size:24px;
+	position: absolute;
+	z-index:10;
+}
+#wrapper
+{
+	display:none;
 }
 .wrapper-all{width:1200px;margin:0 auto}
 canvas#game{display:block;border:1px solid #000;margin:0 auto;}
