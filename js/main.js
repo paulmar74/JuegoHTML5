@@ -163,10 +163,10 @@ function agregarEventosTeclado(){
 		
 		
 	});
-	/*agregarTouchEvento(document,'keyup',function(e){
+	agregarTouchEvento(document,'keyup',function(e){
 		//desabilitamos la tecla poniendola en false
 		teclado[e.keyCode] = false;	
-	});*/
+	});
 	function agregarEvento(elemento,nombreEvento,funcion){
 		if(elemento.addEventListener){
 			//navegadores modernos
