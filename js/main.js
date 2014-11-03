@@ -62,6 +62,7 @@ var fondo,imgEnemigo,imgEnemigoHit,imgNave,imgNaveHit,fired,imgLanza;
 var intervalo;
 // crear nave
 var teclado = {};
+var touched = {};
 //array para los disparos
 var disparos = [];
 //array que almacena los enemigos
@@ -150,11 +151,32 @@ function agregarEventosTeclado(){
 		
 		
 	});
-	agregarEvento(document,'keyup',function(e){
+	agregarTouchEvento(el,'touchstart',function(e){
+		//ponemos en true la tecla presionada
+		if (e.targetTouches.length == 1) { 
+			var touch = e.targetTouches[0]; 
+			// con esto solo se procesa UN evento touch
+			alert(" se ha producido un touchstart en las siguientes cordenas: X " + touch.pageX + " en Y " + touch.pageY);
+			touched[el] = true;
+		}
+		
+		
+		
+	},false);
+	/*agregarTouchEvento(document,'keyup',function(e){
 		//desabilitamos la tecla poniendola en false
 		teclado[e.keyCode] = false;	
-	});
+	});*/
 	function agregarEvento(elemento,nombreEvento,funcion){
+		if(elemento.addEventListener){
+			//navegadores modernos
+			elemento.addEventListener(nombreEvento,funcion,false);	
+		}else if(elemento.attachEvent){
+			//Internet explorer
+			elemento,attachEvent(nombreEvento,funcion);
+		}
+	}
+	function agregarTouchEvento(elemento,nombreEvento,funcion){
 		if(elemento.addEventListener){
 			//navegadores modernos
 			elemento.addEventListener(nombreEvento,funcion,false);	
@@ -195,6 +217,35 @@ function moverNave(){
 	}else {
 		teclado.fire = false
 	}
+	/*if (dispositivosTouch){*/
+		//move to left
+			var tLeft= document.getElementById("tLeft");
+			var tRight= document.getElementById("tRight");
+			if (touched[tLeft]){
+				nave.x -= config.velNave;
+				if(nave.x < 0) nave.x = 0;
+			}
+			//move to right
+			if (touched[tRight]){
+				var limite = canvas.width - nave.width;
+				nave.x += config.velNave;
+				if(nave.x > limite) nave.x = limite;
+			}
+			if (teclado[32] && nave.estado == 'vivo'){
+				//console.log(teclado.fire + ' teclado.fire');
+				//teclado.fire es un booleano que creamos y que le damos los valores en el if de abajo
+				//para que dispare una bala a a la vez la nave
+				if(!teclado.fire){
+					fire();
+					teclado.fire = true;
+				}
+				
+			}else {
+				teclado.fire = false
+			}
+	
+	
+	//}
 	if(nave.estado == 'hit'){
 		nave.contador++;
 		if(nave.contador >= 20){
