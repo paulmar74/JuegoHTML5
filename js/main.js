@@ -151,19 +151,19 @@ function agregarEventosTeclado(){
 		
 		
 	});
-	agregarTouchEvento(touched,'touchstart',function(e){
+	agregarTouchEvento(elemento,'touchstart',function(e){
 		//ponemos en true la tecla presionada
 		if (e.targetTouches.length == 1) { 
 			var touch = e.targetTouches[0]; 
 			// con esto solo se procesa UN evento touch
 			alert(" se ha producido un touchstart en las siguientes cordenas: X " + touch.pageX + " en Y " + touch.pageY);
-			teclado[touched] = true;
+			teclado[elemento] = true;
 		}
 		
 		
 		
 	});
-	agregarTouchEvento(document,'keyup',function(e){
+	agregarEvento(document,'keyup',function(e){
 		//desabilitamos la tecla poniendola en false
 		teclado[e.keyCode] = false;	
 	});
@@ -176,13 +176,13 @@ function agregarEventosTeclado(){
 			elemento,attachEvent(nombreEvento,funcion);
 		}
 	}
-	function agregarTouchEvento(touched,nombreEvento,funcion){
-		if(touched.addEventListener){
+	function agregarTouchEvento(elemento,nombreEvento,funcion){
+		if(elemento.addEventListener){
 			//navegadores modernos
-			touched.addEventListener(nombreEvento,funcion,false);	
-		}else if(touched.attachEvent){
+			elemento.addEventListener(nombreEvento,funcion,false);	
+		}else if(elemento.attachEvent){
 			//Internet explorer
-			touched,attachEvent(nombreEvento,funcion);
+			elemento,attachEvent(nombreEvento,funcion);
 		}
 	}
 }
