@@ -62,7 +62,7 @@ var fondo,imgEnemigo,imgEnemigoHit,imgNave,imgNaveHit,fired,imgLanza;
 var intervalo;
 // crear nave
 var teclado = {};
-var touched;
+var touched = {};
 //array para los disparos
 var disparos = [];
 //array que almacena los enemigos
