@@ -151,7 +151,7 @@ function agregarEventosTeclado(){
 		
 		
 	});
-	agregarTouchEvento(el,'touchstart',function(e){
+	agregarTouchEvento(document,'touchstart',function(e){
 		//ponemos en true la tecla presionada
 		if (e.targetTouches.length == 1) { 
 			var touch = e.targetTouches[0]; 
