@@ -62,7 +62,7 @@ var fondo,imgEnemigo,imgEnemigoHit,imgNave,imgNaveHit,fired,imgLanza;
 var intervalo;
 // crear nave
 var teclado = {};
-var touched = {};
+
 //array para los disparos
 var disparos = [];
 //array que almacena los enemigos
@@ -144,29 +144,47 @@ function dibujarNave(){
 	ctx.drawImage(imagenNave,nave.x,nave.y,nave.width,nave.height);
 	ctx.restore();
 }
+function getDom (e,funcion){
+			var dom = document.getElementById(e);
+			agregarTouch('touchstart',function(){
+				return true;	
+			})
+			agregarTouch('touchend',function(){
+				return false;	
+			})
+			
+			function agregarTouch(tipoEvento,funcion){
+				if(dom.addEventListener){
+					dom.addEventListener(tipoEvento,funcion,false);
+				}
+			}
+}
 function agregarEventosTeclado(){
 	agregarEvento(document,'keydown',function(e){
 		//ponemos en true la tecla presionada
 		teclado[e.keyCode] = true;
-		
-		
-	});
-	agregarTouchEvento(elemento,'touchstart',function(e){
-		//ponemos en true la tecla presionada
-		if (e.targetTouches.length == 1) { 
-			var touch = e.targetTouches[0]; 
-			// con esto solo se procesa UN evento touch
-			alert(" se ha producido un touchstart en las siguientes cordenas: X " + touch.pageX + " en Y " + touch.pageY);
-			teclado[elemento] = true;
-		}
-		
-		
-		
 	});
 	agregarEvento(document,'keyup',function(e){
 		//desabilitamos la tecla poniendola en false
 		teclado[e.keyCode] = false;	
 	});
+	/*var tLeft= document.getElementById("tLeft");
+	var tRight= document.getElementById("tRight");
+	object = tLeft*/;
+	
+
+			//agregarTouchEvento(getDom[Dom],'touchstart',function(event){
+//				//ponemos en true la tecla presionada
+//				if (event.targetTouches.length == 1) { 
+//					var touch = event.targetTouches[0]; 
+//					// con esto solo se procesa UN evento touch
+//					
+//				}
+//				
+//				
+//				
+//			});
+	
 	function agregarEvento(elemento,nombreEvento,funcion){
 		if(elemento.addEventListener){
 			//navegadores modernos
@@ -176,6 +194,7 @@ function agregarEventosTeclado(){
 			elemento,attachEvent(nombreEvento,funcion);
 		}
 	}
+
 	function agregarTouchEvento(elemento,nombreEvento,funcion){
 		if(elemento.addEventListener){
 			//navegadores modernos
@@ -219,18 +238,17 @@ function moverNave(){
 	}
 	/*if (dispositivosTouch){*/
 		//move to left
-			var tLeft= document.getElementById("tLeft");
-			var tRight= document.getElementById("tRight");
-			if (touched[tLeft]){
+			
+			getDom('tLeft',function(){
 				nave.x -= config.velNave;
 				if(nave.x < 0) nave.x = 0;
-			}
+			});
 			//move to right
-			if (touched[tRight]){
+			getDom('tRight',function(){
 				var limite = canvas.width - nave.width;
 				nave.x += config.velNave;
 				if(nave.x > limite) nave.x = limite;
-			}
+			});
 			//if (teclado[32] && nave.estado == 'vivo'){
 //				//console.log(teclado.fire + ' teclado.fire');
 //				//teclado.fire es un booleano que creamos y que le damos los valores en el if de abajo
