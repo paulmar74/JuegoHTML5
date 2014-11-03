@@ -62,7 +62,7 @@ var fondo,imgEnemigo,imgEnemigoHit,imgNave,imgNaveHit,fired,imgLanza;
 var intervalo;
 // crear nave
 var teclado = {};
-var touched = {};
+var touched;
 //array para los disparos
 var disparos = [];
 //array que almacena los enemigos
@@ -151,18 +151,18 @@ function agregarEventosTeclado(){
 		
 		
 	});
-	agregarTouchEvento(document,'touchstart',function(e){
+	agregarTouchEvento(touched,'touchstart',function(e){
 		//ponemos en true la tecla presionada
 		if (e.targetTouches.length == 1) { 
 			var touch = e.targetTouches[0]; 
 			// con esto solo se procesa UN evento touch
 			alert(" se ha producido un touchstart en las siguientes cordenas: X " + touch.pageX + " en Y " + touch.pageY);
-			touched[el] = true;
+			teclado[touched] = true;
 		}
 		
 		
 		
-	},false);
+	});
 	/*agregarTouchEvento(document,'keyup',function(e){
 		//desabilitamos la tecla poniendola en false
 		teclado[e.keyCode] = false;	
@@ -176,13 +176,13 @@ function agregarEventosTeclado(){
 			elemento,attachEvent(nombreEvento,funcion);
 		}
 	}
-	function agregarTouchEvento(elemento,nombreEvento,funcion){
-		if(elemento.addEventListener){
+	function agregarTouchEvento(touched,nombreEvento,funcion){
+		if(touched.addEventListener){
 			//navegadores modernos
-			elemento.addEventListener(nombreEvento,funcion,false);	
-		}else if(elemento.attachEvent){
+			touched.addEventListener(nombreEvento,funcion,false);	
+		}else if(touched.attachEvent){
 			//Internet explorer
-			elemento,attachEvent(nombreEvento,funcion);
+			touched,attachEvent(nombreEvento,funcion);
 		}
 	}
 }
@@ -231,18 +231,18 @@ function moverNave(){
 				nave.x += config.velNave;
 				if(nave.x > limite) nave.x = limite;
 			}
-			if (teclado[32] && nave.estado == 'vivo'){
-				//console.log(teclado.fire + ' teclado.fire');
-				//teclado.fire es un booleano que creamos y que le damos los valores en el if de abajo
-				//para que dispare una bala a a la vez la nave
-				if(!teclado.fire){
-					fire();
-					teclado.fire = true;
-				}
-				
-			}else {
-				teclado.fire = false
-			}
+			//if (teclado[32] && nave.estado == 'vivo'){
+//				//console.log(teclado.fire + ' teclado.fire');
+//				//teclado.fire es un booleano que creamos y que le damos los valores en el if de abajo
+//				//para que dispare una bala a a la vez la nave
+//				if(!teclado.fire){
+//					fire();
+//					teclado.fire = true;
+//				}
+//				
+//			}else {
+//				teclado.fire = false
+//			}
 	
 	
 	//}
