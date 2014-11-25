@@ -167,7 +167,7 @@ function agregarEventosTeclado(){
 		move.left = true;
 
 	});
-	agregarEvento(toLeft,'touchend',function(e){
+	agregarEvento(toLeft,'touchleave',function(e){
 		//desabilitamos la tecla poniendola en false
 		e.preventDefault();
 		move.left = false;	
@@ -177,12 +177,12 @@ function agregarEventosTeclado(){
 		e.preventDefault();
 		move.right = true;
 	});
-	agregarEvento(toRight,'touchend',function(e){
+	agregarEvento(toRight,'touchleave',function(e){
 		//desabilitamos la tecla poniendola en false
 		e.preventDefault();
 		move.right = false;	
 	});
-	agregarEvento(toShot,'touchmove',function(e){
+	agregarEvento(toShot,'touchstart',function(e){
 		//ponemos en true la tecla presionada
 		e.preventDefault();
 		move.shot = true;
