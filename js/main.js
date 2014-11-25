@@ -1,4 +1,4 @@
-alert('act1')
+//alert('act1')
 var part;
 var choosePartido = {
 	load:function(){
@@ -164,6 +164,7 @@ function agregarEventosTeclado(){
 	agregarEvento(toLeft,'touchenter',function(e){
 		//ponemos en true la tecla presionada
 		move.left = true;
+		alert('act1')
 	});
 	agregarEvento(toLeft,'touchleave',function(e){
 		//desabilitamos la tecla poniendola en false
