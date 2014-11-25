@@ -165,7 +165,6 @@ function agregarEventosTeclado(){
 		//ponemos en true la tecla presionada
 		e.preventDefault();
 		move.left = true;
-
 	});
 	agregarEvento(toLeft,'touchleave',function(e){
 		//desabilitamos la tecla poniendola en false
