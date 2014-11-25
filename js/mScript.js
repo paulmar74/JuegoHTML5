@@ -45,7 +45,7 @@ function prepararCanvas()
 }*/
 function progresoCarga()
 {
-	preloader.progress = preloader.progress + 0.004;
+	preloader.progress = preloader.progress + 0.01;
 	console.log(preloader.progress)
 	var ctxD = canvasDos.getContext('2d');
 	ctxD.beginPath();
