@@ -1,3 +1,4 @@
+alert('act1')
 var part;
 var choosePartido = {
 	load:function(){
