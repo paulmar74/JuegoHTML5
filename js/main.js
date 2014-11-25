@@ -161,7 +161,7 @@ function agregarEventosTeclado(){
 		teclado[e.keyCode] = false;	
 	});
 	
-	agregarEvento(toLeft,'touchmove',function(e){
+	agregarEvento(toLeft,'touchstart',function(e){
 		//ponemos en true la tecla presionada
 		e.preventDefault();
 		move.left = true;
@@ -171,7 +171,7 @@ function agregarEventosTeclado(){
 		e.preventDefault();
 		move.left = false;	
 	});
-	agregarEvento(toRight,'touchmove',function(e){
+	agregarEvento(toRight,'touchstart',function(e){
 		//ponemos en true la tecla presionada
 		e.preventDefault();
 		move.right = true;
