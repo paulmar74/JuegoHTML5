@@ -48,6 +48,8 @@ p.credits{text-align:right;font: 12px "Trebuchet MS", Arial, Helvetica, sans-ser
 p.credits a{color:#999;text-decoration:none;}
 p.credits a:hover{text-decoration:underline;}
 .wrapper-touch{position:absolute;top:520px;right:0;width:170px;height:100px;}
-.wrapper-touch div{background-color:rgba(250,250,250,0.60);z-index:100;height:100%;width:80px;font:bold 42px/89px Arial;text-align:center;color:#999}
+.wrapper-touch div{background-color:rgba(250,250,250,0.60);z-index:100;height:100%;width:80px;font:bold 42px/89px Arial;text-align:center;color:#999;cursor:pointer;}
 .wrapper-touch .touch-left{float:left;border-radius:96px 0 0 96px ;}
 .wrapper-touch .touch-right{float:right;border-radius:0 96px 96px 0;}
+.wrapper-shot{position:absolute;top:520px;left:30px;width:80px;height:80px;}
+.wrapper-shot div{width:100%;height:100%;border-radius:96px;background-color:rgba(250,250,250,0.60);font:normal 66px/80px Arial;text-align:center;color:#F2F2F2;z-index:100;cursor:pointer;}
