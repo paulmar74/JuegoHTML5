@@ -47,9 +47,20 @@ var choosePartido = {
 }
 
 //objetos importantes de canvas
-
+function getResize(w,h){
+	var amount = 0;
+	if(w>0){
+		amount = Math.min(w, ($('.wrapper-all').width() / 100) * 10 );
+	}
+	if(h>0){
+		amount = Math.min(h, ($('.wrapper-all').height() / 100) * 10 );
+	}
+	return amount;	
+}
 var canvas = document.getElementById('game');
 var ctx = canvas.getContext('2d');
+canvas.width = $('.wrapper-all').width() ;
+canvas.height = $('.wrapper-all').height();
 //definir var para fondo
 var config = {
 	velNave: 5,
@@ -72,10 +83,10 @@ var enemigos = [];
 //array para los disparos del enemigo
 var disparosEnemigos = [];
 var nave = {
-	x:100,
-	y:canvas.height-100,
-	width:120,
-	height:80,
+	x:getResize(100,0),
+	y:canvas.height-getResize(0,100),
+	width:getResize(120,0),
+	height:getResize(0,80),
 	estado:'vivo',
 	contador:0
 	
@@ -142,7 +153,7 @@ function dibujarNave(){
 	/*ctx.fillStyle='#fff';*/
 	/*ctx.fillRect(nave.x,nave.y,nave.width,nave.height);*/	
 	if(nave.estado == 'vivo')imagenNave = imgNave;
-	if(nave.estado == 'hit'){imagenNave = imgNaveHit;nave.y=canvas.height-80}
+	if(nave.estado == 'hit'){imagenNave = imgNaveHit;nave.y=canvas.height-getResize(0,80)}
 	ctx.drawImage(imagenNave,nave.x,nave.y,nave.width,nave.height);
 	ctx.restore();
 }
@@ -166,7 +177,7 @@ function agregarEventosTeclado(){
 		e.preventDefault();
 		move.left = true;
 	});
-	agregarEvento(toLeft,'touchleave',function(e){
+	agregarEvento(toLeft,'touchend',function(e){
 		//desabilitamos la tecla poniendola en false
 		e.preventDefault();
 		move.left = false;	
@@ -176,7 +187,7 @@ function agregarEventosTeclado(){
 		e.preventDefault();
 		move.right = true;
 	});
-	agregarEvento(toRight,'touchleave',function(e){
+	agregarEvento(toRight,'touchend',function(e){
 		//desabilitamos la tecla poniendola en false
 		e.preventDefault();
 		move.right = false;	
@@ -275,22 +286,22 @@ function actualizaEnemigos(){
 	function agregarDisparosEnemigos(enemigo){
 	 	return {
 			x:enemigo.x,
-			y:enemigo.y+60,
-			width:14,
-			height:37,
+			y:enemigo.y+getResize(0,60),
+			width:getResize(14,0),
+			height:getResize(0,37),
 			contador:0	
 			
 		}	
 	}
 	if (juego.estado == 'iniciando'){
 		for (var j = 0; j < config.filasEnemigos; j++){
-			var fila = j*95;
+			var fila = j*getResize(95,0);
 			for(var i = 0; i < 10; i++){
 				enemigos.push({
-					x:10 + (i*90),
+					x:10 + (i*getResize(90,0)),
 					y:10+fila,
-					height:80,
-					width:80,
+					height:getResize(0,80),
+					width:getResize(80,0),
 					estado:'vivo',
 					contador:0
 				})
@@ -339,10 +350,10 @@ function moverDisparos(){
 function fire(){
 	//tamaño y posicion inicial de los disparos
 	disparos.push({
-		x:nave.x + 20,
-		y:nave.y - 10,
-		width: 10,
-		height: 30	
+		x:nave.x + getResize(20,0),
+		y:nave.y - getResize(0,10),
+		width: getResize(10,0),
+		height: getResize(0,30)	
 	});
 }
 function dibujarDisparos(){

@@ -29,7 +29,15 @@ header{padding: 20px 0 0 ;text-align:center;}
 {
 	display:none;
 }
-.wrapper-all{width:1200px;margin:0 auto;position:relative;}
+.wrapper-all{width:1200px;height:700px;margin:0 auto;position:relative;}
+@media only screen and (max-width: 1024px){
+	.wrapper-all{width:1000px;height:630px;margin:0 auto;position:relative;}	
+	
+}
+@media only screen and (max-width: 768px){
+	.wrapper-all{width:700px;height:400px;margin:0 auto;position:relative;}	
+	
+}
 canvas#game{display:block;margin:0 auto;}
 .wrapper-lb{position:absolute;width:100%;height:100%;background-color:rgba(0,0,0,0.96);z-index:100;}
 .lbcontent{position:absolute;margin:-181px 0 0 -270px;left:50%;top:50%;width:540px;height:362px;padding:15px;background:#000;border:1px dashed #fff;text-align:center;}
